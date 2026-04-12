@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Jueguito</title>
+
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffe4ec, #fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1 {
+  color: #ff4d88;
+}
+
+/* Imagen */
+img {
+  width: 200px;
+  border-radius: 15px;
+  margin: 10px 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.correcta {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Botones */
+button {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 12px;
+  border: none;
+  border-radius: 15px;
+  background: #ffd1dc;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ffb6c1;
+}
+
+#resultado {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #ff4d88;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Adivina el personaje ozi</h1>
+
+  <img id="imagen" src="">
+
+  <p id="pregunta"></p>
+
+  <div id="opciones"></div>
+
+  <p id="resultado"></p>
+</div>
+
+<script>
+let preguntas = [
+{
+  sombra: "https://i.imgur.com/7LO1aNj.jpeg",
+  real: "https://i.imgur.com/7CqbIHE.jpeg",
+  pregunta: "Es un femboy Anemo",
+  opciones: ["Venti", "Xiao", "Kazuha"],
+  correcta: "Venti"
+},
+{
+  sombra: "https://i.imgur.com/grogNbt.jpeg",
+  real: "https://i.imgur.com/qJmCu6Y.jpeg",
+  pregunta: "es un clasista hydro",
+  opciones: ["Furina", "Ayato", "Neuvillette"],
+  correcta: "Ayato"
+},
+{
+  sombra: "https://i.imgur.com/ZTbA3mh.jpeg",
+  real: "https://i.imgur.com/5H1AytD.jpeg",
+  pregunta: "Es arconte Electro ⚡",
+  opciones: ["Raiden Shogun", "Yae Miko", "Keqing"],
+  correcta: "Raiden Shogun"
+},
+{
+  sombra: "https://i.imgur.com/z6k0hHn.jpeg",
+  real: "https://i.imgur.com/QlHWO1r.jpeg",
+  pregunta: "Es Pyro y un desastre andante",
+  opciones: ["Klee", "Hu Tao", "benet"],
+  correcta: "Klee"
+},
+{
+  sombra: "https://i.imgur.com/REhh00t.jpeg",
+  real: "https://i.imgur.com/s2rQEtM.jpeg",
+  pregunta: "Es un papasote rikote🔥",
+  opciones: ["Varka", "Flins", "Capitano"],
+  correcta: "Varka"
+}
+];
+
+let actual = 0;
+
+function cargarPregunta(){
+  let p = preguntas[actual];
+
+  document.getElementById("imagen").src = p.sombra;
+  document.getElementById("pregunta").innerText = p.pregunta;
+
+  let opcionesHTML = "";
+  p.opciones.forEach(op => {
+    opcionesHTML += `<button onclick="responder('${op}')">${op}</button>`;
+  });
+
+  document.getElementById("opciones").innerHTML = opcionesHTML;
+}
+
+function responder(op){
+  let p = preguntas[actual];
+
+  if(op === p.correcta){
+    document.getElementById("resultado").innerText = "Correcto 💖";
+
+    // Cambia imagen a personaje real
+    let img = document.getElementById("imagen");
+    img.src = p.real;
+    img.classList.add("correcta");
+
+    // Siguiente pregunta
+    setTimeout(() => {
+      actual++;
+      if(actual < preguntas.length){
+        document.getElementById("resultado").innerText = "";
+        img.classList.remove("correcta");
+        cargarPregunta();
+      } else {
+        window.location.href = "final.html";
+      }
+    }, 1500);
+
+  } else {
+    document.getElementById("resultado").innerText = "Intenta otra vez 🥺";
+  }
+}
+
+cargarPregunta();
+</script>
+
+</body>
+</html>

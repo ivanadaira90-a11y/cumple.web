@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cartita para ti 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(#fff0f5, #ffe4ec);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Tarjeta */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  max-width: 420px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  animation: aparecer 1.5s ease;
+}
+
+@keyframes aparecer {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+h2 {
+  color: #ff4d88;
+}
+
+/* Imagen */
+img {
+  width: 120px;
+  margin-bottom: 10px;
+  animation: flotar 3s infinite ease-in-out;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+/* Texto */
+#texto {
+  margin-top: 10px;
+  white-space: pre-line;
+  border-right: 2px solid #ff4d88;
+  display: inline-block;
+  padding-right: 5px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Botón bonito */
+#botonJuego {
+  margin-top: 20px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 20px;
+  background: #ff4d88;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s;
+}
+
+.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Corazones */
+.heart {
+  position: absolute;
+  color: pink;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- Imagen bonita -->
+  <img src="https://i.imgur.com/3q79uYj.jpeg">
+
+  <h2>Para ti 💌</h2>
+
+  <p id="texto"></p>
+
+  <button onclick="irJuego()" style="
+  margin-top:20px;
+  padding:15px 25px;
+  border:none;
+  border-radius:20px;
+  background:#ff4d88;
+  color:white;
+  font-size:16px;
+  cursor:pointer;">
+  Tengo algo más para ti 🎮
+</button>
+
+</div>
+
+<script>
+// MENSAJE
+const mensaje = `Feliz cumple vrocito 💗🎂
+
+espero que hoy sea un día bonito y especial para ti...
+
+te admiro vro apesar de todo saliste adelante como todo un sigma💜
+
+Quiero que recuerdes algo:
+mereces cosas bonitas,
+mereces paz,
+y mereces sentirte querido 💖
+
+Y bueno... tengo algo más que darte`;
+
+
+// MAQUINA DE ESCRIBIR
+let i = 0;
+function escribir() {
+  if (i < mensaje.length) {
+    document.getElementById("texto").innerHTML += mensaje.charAt(i);
+    i++;
+    setTimeout(escribir, 35);
+  } else {
+    document.getElementById("botonJuego").classList.add("mostrar");
+  }
+}
+escribir();
+
+// BOTÓN
+function irJuego(){
+  window.location.href = "juego.html";
+}
+
+// CORAZONES
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 400);
+</script>
+
+</body>
+</html>

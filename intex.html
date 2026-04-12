@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sorpresita ozi 💗</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(#ffe4ec, #fff);
+  text-align: center;
+}
+
+/* Pantalla inicio */
+#inicio {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #ffe4ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#inicio button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 20px;
+  background: #ff4d88;
+  color: white;
+  font-size: 18px;
+}
+
+/* Contenido */
+#contenido {
+  display: none;
+}
+
+.section {
+  margin: 100px 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 400px;
+  margin: auto;
+}
+
+h1 {
+  margin-top: 100px;
+  color: #ff4d88;
+}
+
+/* Botón final */
+.final-btn {
+  margin: 100px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 20px;
+  background: #ff4d88;
+  color: white;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Pantalla inicio -->
+<div id="inicio">
+  <h2>🎁 Tengo algo para ti...</h2>
+  <button onclick="entrar()">Abrir regalo 💖</button>
+</div>
+
+<!-- Contenido -->
+<div id="contenido">
+
+<h1>FELIZ CUMPLE VRO🎂💗</h1>
+
+<div class="section"><div class="card">
+<p>ozi se que no llevakos mucho tiempo conociendonos... pero te agarre ganas de demandarte🫶</p>
+</div></div>
+
+<div class="section"><div class="card">
+<p>Sé que has pasado por mucho y no ha sido fácil... pero mereces cosas bonitas 💕</p>
+</div></div>
+
+<div class="section"><div class="card">
+<p>Eres más fuerte de lo que crees ozi ✨</p>
+</div></div>
+
+<div class="section"><div class="card">
+<p>amo mucho tu personalidad vro y tu risa de retrasado, ademas me gusta escuchar mucho tus anecdotas y hablar contigo 💗</p>
+</div></div>
+
+<div class="section"><div class="card">
+<p>eres el mas pro de todos(mentira yo soy) 🔥</p>
+</div></div>
+
+<button class="final-btn" onclick="irCarta()">Haz clic aquí 💌</button>
+
+</div>
+
+<script>
+function entrar(){
+  document.getElementById("inicio").style.display="none";
+  document.getElementById("contenido").style.display="block";
+}
+
+function irCarta(){
+  window.location.href = "carta.html";
+}
+
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>

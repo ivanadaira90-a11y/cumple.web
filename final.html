@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Sorpresa 💖</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#fff0f5, #ffe4ec);
+  overflow: hidden;
+}
+
+/* Tarjeta */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  animation: aparecer 1.5s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Imagen */
+img {
+  width: 150px;
+  border-radius: 20px;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* Texto */
+h2 {
+  color: #ff4d88;
+}
+
+p {
+  margin-top: 10px;
+}
+
+/* Corazones */
+.heart {
+  position: absolute;
+  color: pink;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+  <h2>FELICIDADES VRO GANASTE🔥</h2>
+
+  <p>
+  muchas felicidades vro te ganaste una rika bendicion lunar<br><br>
+  ozi que bendicion<br><br>
+  y por ultimo nuevamente feliz cumple vro, espero y te haya sacado<br><br>
+  una sonrisa o al menos gustado.
+  </p>
+
+</div>
+
+<script>
+// Corazones flotando
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 400);
+</script>
+
+</body>
+</html>
