@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Sorpresita ozi 💗</title>
+
 <style>
 body {
   margin: 0;
@@ -35,13 +36,15 @@ body {
 /* Contenido */
 #contenido {
   display: none;
+  padding: 20px;
 }
 
+/* Secciones (ANTES estaban muy separadas) */
 .section {
-  margin: 100px 20px;
+  margin: 40px 10px; /* 👈 AQUÍ ARREGLO */
   opacity: 0;
-  transform: translateY(50px);
-  transition: 1s;
+  transform: translateY(40px);
+  transition: 0.8s;
 }
 
 .show {
@@ -49,6 +52,7 @@ body {
   transform: translateY(0);
 }
 
+/* Tarjetas */
 .card {
   background: white;
   padding: 20px;
@@ -57,14 +61,15 @@ body {
   margin: auto;
 }
 
+/* Título (ANTES empujaba todo) */
 h1 {
-  margin-top: 100px;
+  margin-top: 30px; /* 👈 ARREGLADO */
   color: #ff4d88;
 }
 
 /* Botón final */
 .final-btn {
-  margin: 100px;
+  margin: 40px; /* 👈 MENOS ESPACIO */
   padding: 15px 25px;
   border: none;
   border-radius: 20px;
@@ -127,7 +132,7 @@ const sections = document.querySelectorAll('.section');
 window.addEventListener('scroll', () => {
   sections.forEach(sec => {
     const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
+    if(top < window.innerHeight - 50){
       sec.classList.add('show');
     }
   });
