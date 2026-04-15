@@ -39,9 +39,9 @@ body {
   padding: 20px;
 }
 
-/* Secciones (ANTES estaban muy separadas) */
+/* Secciones */
 .section {
-  margin: 40px 10px; /* 👈 AQUÍ ARREGLO */
+  margin: 40px 10px;
   opacity: 0;
   transform: translateY(40px);
   transition: 0.8s;
@@ -61,15 +61,15 @@ body {
   margin: auto;
 }
 
-/* Título (ANTES empujaba todo) */
+/* Título */
 h1 {
-  margin-top: 30px; /* 👈 ARREGLADO */
+  margin-top: 30px;
   color: #ff4d88;
 }
 
 /* Botón final */
 .final-btn {
-  margin: 40px; /* 👈 MENOS ESPACIO */
+  margin: 40px;
   padding: 15px 25px;
   border: none;
   border-radius: 20px;
@@ -132,11 +132,18 @@ const sections = document.querySelectorAll('.section');
 window.addEventListener('scroll', () => {
   sections.forEach(sec => {
     const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 50){
+    if(top < window.innerHeight){
       sec.classList.add('show');
     }
   });
 });
+
+// 👇 ESTO HACE QUE NO SE SIENTA TRABADO
+window.onload = () => {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.add('show');
+  });
+};
 </script>
 
 </body>
